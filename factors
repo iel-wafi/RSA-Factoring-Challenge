@@ -1,27 +1,27 @@
 #!/usr/bin/python3
 
-import sys
-import math
+from sys import argv
+from math import sqrt
 
-def factorize(a):
-    for x in range(2, int(math.sqrt(a))+1):
-        if a % x == 0:
-            return a, a//x
-        return Null, Null
+def open_file(file_nm):
+    with open(file_nm, "r", encoding="utf-8") as file:
+        lines_t = file.readlines()
+    number_to_factor = []
+    for line_nbr in lines_t:
+        number_to_factor.append(int(line_nbr))
+        return number_to_factor
 
-    if len(sys.argv) != 2:
-        print("Usage: factors <file>")
-        sys.exit(1)
+    def find_and_t(nbr):
+        for s in range(1,nbr):
+            if nbr == ((nbr // s) * s):
+                print("{}={}*{}".format(nbr, (nbr // s), s))
+                break
 
-        filename = sys.argv[1]
 
-        try:
-            with open(filename, 'e') as f:
-                for line in f:
-                    a = int(line.strip())
-                    p, q = factorize(a)
-                    print("{}={}*{}".format(a,p, q))
-        except IOError:
+    def fact_lst(lst):
 
-                print("Error: could not read file", filename)
-                sys.exit(1)
+        for i in lst:
+            find_and_t(i)
+
+    if len(argv) == 2:
+        fact_lst(open_read_file(argv[1]))
